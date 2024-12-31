@@ -18,7 +18,7 @@ void addContact(char*** list, int* size)
     if (*list == NULL)
     {
         printf("Reallocation failed.\n");  
-        exit(EXIT_FAILURE);  
+        return; 
     }
 
     struct contact person;
@@ -27,19 +27,19 @@ void addContact(char*** list, int* size)
     if (person.name == NULL)
     {
         printf("Allocation failed.\n");
-        exit(EXIT_FAILURE);
+        return;
     }
     person.phone = (char*)malloc(15*(sizeof(char)));
     if (person.phone == NULL)
     {
         printf("Allocation failed.\n");
-        exit(EXIT_FAILURE);
+        return;
     }
     person.email = (char*)malloc(50*(sizeof(char)));
     if (person.email == NULL)
     {
         printf("Allocation failed.\n");
-        exit(EXIT_FAILURE);
+        return;
     }
 
     printf("Enter the person's name: \n");
@@ -51,7 +51,7 @@ void addContact(char*** list, int* size)
     printf("Enter the person's email address: \n");
     scanf("%s", person.email);
 
-    char* tempContact = (char*)malloc(115*(sizeof(char)));
+    char* tempContact = (char*)malloc(256*(sizeof(char)));
     strcpy(tempContact, person.name);
     strcat(tempContact, " , ");
     strcat(tempContact, person.phone);
